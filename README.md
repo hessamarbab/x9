@@ -223,8 +223,6 @@ Ideas for improvements:
 
 ## License
 
-Copyright (c) 2025 Hessam
-
 This project is licensed under the MIT License
 
 > Note: Some parts of this README were generated with the assistance of AI (ChatGPT).
