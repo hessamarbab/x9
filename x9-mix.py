@@ -35,13 +35,13 @@ def chunk_data_generator(data, chunk_size):
 def create_urls_with_combine_strategy(base_urls, params, chunk_size, ssl, headers):
     all_generated_urls = []
     values = [
-        'mooji"',
-        'mooji\\"',
-        "mooji'",
-        "mooji\\'",
-        'mooji`',
-        'mooji\\`',
-        'mooji<'
+        'joojooham"',
+        'joojooham\\"',
+        "joojooham'",
+        "joojooham\\'",
+        'joojooham`',
+        'joojooham\\`',
+        'joojooham<'
     ]
 
     for base_url in base_urls:
@@ -75,13 +75,13 @@ def create_urls_with_combine_strategy(base_urls, params, chunk_size, ssl, header
 def create_urls_with_ignore_strategy(base_urls, params, chunk_size, ssl, headers):
     all_generated_urls = []
     value_variations = [
-        'mooji"',
-        'mooji\\"',
-        "mooji'",
-        "mooji\\'",
-        'mooji`',
-        'mooji\\`',
-        'mooji<'
+        'joojooham"',
+        'joojooham\\"',
+        "joojooham'",
+        "joojooham\\'",
+        'joojooham`',
+        'joojooham\\`',
+        'joojooham<'
     ]
     fparams = []
     for base_url in base_urls:
@@ -126,13 +126,13 @@ def create_urls_with_ignore_strategy(base_urls, params, chunk_size, ssl, headers
 def create_urls_with_normal_strategy(base_urls, params, chunk_size, ssl, headers):
     all_generated_urls = []
     value_variations = [
-        'mooji"',
-        'mooji\\"',
-        "mooji'",
-        "mooji\\'",
-        'mooji`',
-        'mooji\\`',
-        'mooji<'
+        'joojooham"',
+        'joojooham\\"',
+        "joojooham'",
+        "joojooham\\'",
+        'joojooham`',
+        'joojooham\\`',
+        'joojooham<'
     ]
     fparams = []
     for base_url in base_urls:
@@ -222,9 +222,9 @@ def check_response_for_keywords(response_text, keywords):
 
 def process_urls_in_batches(base_urls, params, chunk_size, method, headers, silent, delay, proxy, ssl, strategy):
     keywords = [
-        'mooji""', "mooji''",
-        'mooji\\""', "mooji\\''",
-        "mooji``", "mooji\\``", 'mooji<'
+        'joojooham""', "joojooham''",
+        'joojooham\\""', "joojooham\\''",
+        "joojooham``", "joojooham\\``", 'joojooham<'
     ]
 
     for i in range(0, len(base_urls), 5):
