@@ -63,7 +63,7 @@ http://test.local/view?id={PARAM}
 
 ### `params.txt`
 
-One parameter name per line (or `name=value` pairs if you want preset values). Typically, list parameter names to be tested.
+One parameter name per line. Typically, list parameter names to be tested.
 
 Examples (just names):
 
