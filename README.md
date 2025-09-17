@@ -74,12 +74,6 @@ search
 name
 ```
 
-Or with values:
-
-```
-q=<script>alert(1)</script>
-id=1'><img src=x onerror=alert(1)>
-```
 
 If you supply names only, the tool will inject payload templates for testing reflected XSS.
 
