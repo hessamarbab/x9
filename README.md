@@ -11,16 +11,16 @@ Intended for security testing.
 
 * Read lists of URLs and parameters from files.
 * Generate URL variations using different strategies.
-* Send requests with GET, POST or BOTH.
+* Send requests with GET, POST, or BOTH.
 * Chunk parameters to control payload size.
-* Support custom HTTP headers file.
+* Support a custom HTTP headers file.
 * Optional proxy support, SSL forcing, delay between requests, and silent mode.
 
 ---
 
 ## Installation
 
-Copy the script to your machine, make it executable and run with Python 3.8+:
+Copy the script to your machine, make it executable, and run with Python 3.8+:
 
 ```bash
 # if distributed as x9.py
@@ -51,7 +51,7 @@ x9 -u urls.txt -p params.txt -me GET
 
 ### `urls.txt`
 
-One target URL per line. Use `{PARAM}` placeholder where you want the parameter inserted (optional). If no placeholder exists the tool will append query string parameters for GET.
+One target URL per line. Use `{PARAM}` placeholder where you want the parameter inserted (optional). If no placeholder exists, the tool will append query string parameters for GET.
 
 Examples:
 
@@ -63,7 +63,7 @@ http://test.local/view?id={PARAM}
 
 ### `params.txt`
 
-One parameter name per line (or `name=value` pairs if you want preset values). Typically list parameter names to be tested.
+One parameter name per line (or `name=value` pairs if you want preset values). Typically, list parameter names to be tested.
 
 Examples (just names):
 
@@ -114,11 +114,11 @@ Authorization: Bearer <token>
 * `--ssl` — Force HTTPS. If a URL is `http://`, the tool will convert it to `https://` before sending.
 * `-sg STRATEGY [STRATEGY ...]` — URL generation strategies. Possible values:
 
-  * `ignore` — skip parameters that are not present in the URL (i.e., only test parameters where `{PARAM}` placeholder exists). Good when you want to only test specific injection points.
+  * `ignore` — skip parameters that are not present in the URL (i.e., only test parameters where the `{PARAM}` placeholder exists). Good when you want to only test specific injection points.
   * `normal` — standard generation: append or replace parameters on the URL using each parameter individually.
   * `combine` — combine multiple parameters in a single request according to `--chunk-size`. Useful to test interactions between parameters.
 
-  You can pass one or multiple strategies (e.g. `-sg normal combine`); the tool will run them in order.
+  You can pass one or multiple strategies (e.g., `-sg normal combine`); the tool will run them in order.
 
 > The help text may show repeated strategy names; treat them as single tokens `ignore`, `normal`, `combine`.
 
@@ -160,13 +160,13 @@ x9 -u urls.txt -p params.txt -me GET -s
 
 ## Behavior notes & tips
 
-* **Chunk size**: when `combine` is used the tool will group up to `CHUNK_SIZE` parameters per generated request. If you set `-ch 1` it will behave like single-parameter tests.
-* **Placeholder `{PARAM}`**: if present in a URL, the tool will replace it with `paramname=payload`. If absent the tool will append parameters in query string (GET) or in body (POST).
-* **Payloads**: by default the script injects a set of XSS payload templates. You can modify the payload set in the script if you want custom payloads or different encodings (URL-encoding, HTML-encoding).
+* **Chunk size**: when `combine` is used, the tool will group up to `CHUNK_SIZE` parameters per generated request. If you set `-ch 1`, it will behave like single-parameter tests.
+* **Placeholder `{PARAM}`**: if present in a URL, the tool will replace it with `paramname=payload`. If absent the tool will append parameters in the query string (GET) or in the body (POST).
+* **Payloads**: by default, the script injects a set of XSS payload templates. You can modify the payload set in the script if you want custom payloads or different encodings (URL-encoding, HTML-encoding).
 * **Headers**: if you set a `Content-Type` header in `headers.txt`, ensure it matches what the tool sends (`application/x-www-form-urlencoded` for POST by default).
 * **Proxy**: proxy URL must include scheme (`http://`, `socks5://`) and host\:port.
 * **SSL**: `--ssl` forcibly switches `http://` to `https://`; it does not validate or manage certificates beyond standard Python/requests behavior.
-* **Concurrency**: this tool is sequential by default. If you need concurrency, extend the script carefully and respect target rate limits and legal constraints.
+* **Concurrency**: This tool is sequential by default. If you need concurrency, extend the script carefully and respect target rate limits and legal constraints.
 
 ---
 
@@ -227,41 +227,10 @@ Ideas for improvements:
 
 ---
 
-## License & Contributing
+## License
 
-Use, modify, or redistribute under your chosen license. If contributing, open PRs with focused changes and tests for payload generation and headers handling.
+Copyright (c) 2025 Hessam
 
----
+This project is licensed under the MIT License
 
-## Minimal README footer (copy-paste)
-
-```markdown
-# x9 — Reflected XSS automation & HTTP request generator
-
-> Automation for reflected XSS: generate URLs and send HTTP requests (GET/POST/BOTH).
-
-## Usage
-x9 -u urls.txt -p params.txt -me GET
-
-## Options
-- -u/--urls: path to URLs file
-- -p/--params: path to params file
-- -ch/--chunk-size: default 10
-- -me/--method: GET, POST or BOTH
-- -f/--headers: path to headers file
-- -s/--silent: silent mode
-- -d/--delay: seconds between requests (default 0)
-- -x/--proxy: proxy URL (socks5://host:port)
-- --ssl: force HTTPS
-- -sg/--strategy: one or more of [ignore, normal, combine]
-
-## Warning
-Only test targets you own or are authorized to test.
-```
-
----
-
-If you want, I can also:
-
-* produce a ready-to-run `README.md` file and example `urls.txt`, `params.txt`, `headers.txt` packaged together, or
-* generate a sample JSON/CSV reporter template the tool could output. Which would you prefer?
+> Note: Some parts of this README were generated with the assistance of AI (ChatGPT).
