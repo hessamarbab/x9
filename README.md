@@ -1,4 +1,4 @@
-# x9 — Reflected XSS automation & HTTP request generator
+# x9 — Reflected XSS automation
 
 Automation tool to generate URL payloads for **reflected XSS** testing and send HTTP requests (GET/POST/both).
 Intended for security testing on systems you own or have explicit permission to test. **Do not** use against targets without authorization.
